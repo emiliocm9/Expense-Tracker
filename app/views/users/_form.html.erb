@@ -1,4 +1,17 @@
 <%= form_with(model: user, local: true) do |form| %>
+  <div class="header w-100 bg-main d-flex align-items-center">
+    <div class="primero">
+      <%= link_to root_path, class:'link' do %>
+        <i class="fas fa-arrow-left text-light"></i>
+      <% end %>
+    </div>
+    <div class="d-flex align-items center">
+      <h4 class="text-casual text-uppercase text-light">Register</h4>
+    </div>
+    <div class="actions">
+      <%= form.submit "Next", class:'button text-casual-bold' %>
+    </div>
+  </div>
   <% if user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -11,22 +24,22 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="file_real-cont d-flex align-items-center">
+    <div class="file_image-cont">
+      <img src="https://www.kindpng.com/picc/m/285-2855863_a-festival-celebrating-tractors-round-profile-picture-placeholder.png">
+    </div>
+    <div class="file_text-cont">
+      <span>Upload picture</span>
+    </div>
+    <div class="field input-avatar">
+      <%= form.file_field :avatar, class: 'file-button' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username %>
+  <div class="field input-signup">
+    <%= form.text_field :name, placeholder: 'Name', class: 'input-tag' %>
   </div>
-
-  <div class="field">
-    <%= form.label :password_digest %>
-    <%= form.text_field :password_digest %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field input-signup">
+    <%= form.password_field :password_digest, placeholder: 'Password', class: 'input-tag' %>
   </div>
 <% end %>

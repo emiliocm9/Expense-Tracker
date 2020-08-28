@@ -1,3 +1,86 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f3f2;
+}
+
+.container-total {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.text-container {
+  width: 100%;
+  flex: 3;
+}
+
+.logs-container {
+  width: 100%;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logins {
+  width: 90%;
+  border-radius: 2px;
+  text-align: center;
+  padding: 9px 0;
+}
+
+.logins:hover {
+  cursor: pointer;
+}
+
+.file_real-cont {
+  width: 100%;
+  border: 1px solid #c1c4c3;
+  padding: 5px 10px;
+  box-shadow: 0px 0px 1px 0px rgba(193,196,195,1);
+}
+
+.file_image-cont {
+  width: 30%;
+}
+
+.file_image-cont img {
+  width: 80%;
+}
+
+.file_text-cont:hover {
+  cursor: pointer;
+}
+
+.file_text-cont span {
+  color: #a9a9a9;
+}
+
+.file_text-cont span:hover {
+  cursor: pointer;
+} 
+
+.input-avatar {
+  position: absolute;
+  left: 32%;
+}
+
+.input-avatar:hover {
+  cursor: pointer;
+}
+
+.file-button {
+  opacity: 0;
+  width: 50%;
+}
+
+.file-button:hover {
+  cursor: pointer;
+}
