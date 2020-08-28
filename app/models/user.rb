@@ -1,7 +1,11 @@
 class User < ApplicationRecord
   has_secure_password
   attr_accessor :current_password
+
   validates :name, presence: true
+  validates :username, format: { with: /\A[\w-]+\z/, message: "doesn't meet format requirements" }
+  validates :username, uniqueness: true, presence: true
+
   has_one_attached :avatar
   has_many :groups
   has_many :expenses
