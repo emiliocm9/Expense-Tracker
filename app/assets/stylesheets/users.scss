@@ -84,3 +84,78 @@ body {
 .file-button:hover {
   cursor: pointer;
 }
+
+// users show page
+
+.userpage_big-cont {
+  background: rgb(55,120,194);
+  background: linear-gradient(225deg, rgba(55,120,194,1) 0%, rgba(0,212,255,1) 100%);
+}
+
+.header_avatar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header_avatar-image {
+  width: 50%;
+  margin: auto;
+  clip-path: circle(43% at 50% 50%);
+}
+
+.header_avatar-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header_avatar-text p {
+  font-size: 20px;
+}
+
+.userpage_cat-cont {
+  width: 100%;
+}
+
+.user_cat-cont {
+  width: 100%;
+}
+
+.user_cat-logocont {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.circle-logo {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  padding: 10%;
+  border-radius: 50%;
+}
+
+.circle-logo i {
+  font-size: 100%;
+}
+
+
+.user_cat-textcont {
+  width: 70%;
+  border-bottom: 1px solid white;
+  padding: 7.2% 0;
+}
+
+.user_cat-textcont-last {
+  width: 70%;
+  padding: 7.2% 0;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .userpage_big-cont {
+    height: 100vh;
+    overflow: hidden;
+  }
+}
