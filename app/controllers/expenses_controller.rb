@@ -25,8 +25,7 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = Expense.new(expense_params)
-
+    @expense = current_user.expenses.build(expense_params)
     respond_to do |format|
       if @expense.save
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
@@ -66,7 +65,7 @@ class ExpensesController < ApplicationController
 
   def my_expenses
     expense_id = current_user.id
-    @myexpenses = current_user.expenses.where(user_id: expense_id).sort_by(&:created_at).reverse
+    @myexpenses = current_user.expenses.where(user_id: expense_id).where.not(group_id: nil).sort_by(&:created_at).reverse
   end
 
   def sum_expenses
