@@ -21,6 +21,9 @@ class ExpensesController < ApplicationController
 
   def external
     external_expenses
+    @user = current_user
+    @expenses = Expense.all
+    sum_external
   end
 
   # GET /expenses/1/edit
@@ -78,7 +81,11 @@ class ExpensesController < ApplicationController
   end
 
   def sum_expenses
-    @total = current_user.expenses.pluck(:amount).sum
+    @total = current_user.expenses.where.not(group_id: nil).pluck(:amount).sum
+  end
+
+  def sum_external
+    @total = current_user.expenses.where(group_id: nil).pluck(:amount).sum
   end
 
   # Use callbacks to share common setup or constraints between actions.
