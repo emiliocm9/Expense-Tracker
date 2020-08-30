@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :sessions
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
+  get 'external', to: 'expenses#external', as: 'external'
   resources :expenses
   resources :groups
   resources :users

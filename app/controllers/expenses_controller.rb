@@ -19,6 +19,10 @@ class ExpensesController < ApplicationController
     @expense = Expense.new
   end
 
+  def external
+    external_expenses
+  end
+
   # GET /expenses/1/edit
   def edit; end
 
@@ -66,6 +70,11 @@ class ExpensesController < ApplicationController
   def my_expenses
     expense_id = current_user.id
     @myexpenses = current_user.expenses.where(user_id: expense_id).where.not(group_id: nil).sort_by(&:created_at).reverse
+  end
+
+  def external_expenses
+    expense_id = current_user.id
+    @externalexp = current_user.expenses.where(user_id: expense_id, group_id: nil).sort_by(&:created_at).reverse
   end
 
   def sum_expenses

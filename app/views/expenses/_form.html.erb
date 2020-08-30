@@ -1,7 +1,20 @@
 <%= form_with(model: expense, local: true) do |form| %>
+  <div class="header-expense w-100 bg-main d-flex align-items-center">
+    <div class="primero">
+      <%= link_to expenses_path, class:'link' do %>
+        <i class="fas fa-arrow-left text-light"></i>
+      <% end %>
+    </div>
+    <div class="d-flex text-center flex-column pt-2">
+      <h4 class="expense-title text-casual-bold text-uppercase text-light">New</h4>
+      <h4 class="expense-title text-casual-bold text-uppercase text-light">Expense</h4>
+    </div>
+    <div class="actions">
+    </div>
+  </div>
   <% if expense.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this expense from being saved:</h2>
 
       <ul>
       <% expense.errors.full_messages.each do |message| %>
@@ -12,79 +25,20 @@
   <% end %>
 
   <div class="field input-signup">
-    <%= form.label :group_id %>
-    <%= form.collection_select :group_id, Group.all, :id, :name, include_blank: true, class: 'input-tag' %>
+    <%= form.collection_select :group_id, Group.all, :id, :name, include_blank: 'None', prompt: 'Select group' %>
   </div>
 
   <div class="field input-signup">
-    <%= form.label :name %>
-    <%= form.text_field :name, class: 'input-tag' %>
+    <%= form.text_field :name, class: 'input-tag', placeholder: 'Title' %>
   </div>
 
   <div class="field input-signup">
-    <%= form.label :amount %>
-    <%= form.text_field :amount, class: 'input-tag' %>
+    <%= form.text_field :amount, class: 'input-tag', placeholder: 'Amount' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-
-
-
-
-
-
-<%= form_with(model: user, local: true) do |form| %>
-  <div class="header w-100 bg-main d-flex align-items-center">
-    <div class="primero">
-      <%= link_to root_path, class:'link' do %>
-        <i class="fas fa-arrow-left text-light"></i>
-      <% end %>
+  <div class="bottom_container-big w-100 position-fixed fixed-bottom bg-second">
+    <div class="w-100 border border-light d-flex mt-2 align-items-center text-center">
+      <%= form.submit "Create", class:"w-100 border border-light d-flex align-items-center border-none text-center" %>
     </div>
-    <div class="d-flex align-items center">
-      <h4 class="text-casual text-uppercase text-light">Register</h4>
-    </div>
-    <div class="actions">
-      <%= form.submit "Next", class:'button text-casual-bold' %>
-    </div>
-  </div>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="file_real-cont d-flex align-items-center">
-    <div class="file_image-cont">
-      <img src="https://www.kindpng.com/picc/m/285-2855863_a-festival-celebrating-tractors-round-profile-picture-placeholder.png">
-    </div>
-    <div class="file_text-cont">
-      <span>Upload picture</span>
-    </div>
-    <div class="field input-avatar">
-      <%= form.file_field :avatar, class: 'file-button' %>
-    </div>
-  </div>
-
-  <div class="field input-signup">
-    <%= form.text_field :name, placeholder: 'Name', class: 'input-tag' %>
-  </div>
-  <div class="field input-signup">
-    <%= form.text_field :username, placeholder: 'Username', class: 'input-tag' %>
-  </div>
-  <div class="field input-signup">
-    <%= form.password_field :password, placeholder: 'Password', class: 'input-tag' %>
-  </div>
-  <div class="field input-signup">
-    <%= form.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'input-tag' %>
   </div>
 <% end %>
