@@ -5,6 +5,9 @@ class ExpensesController < ApplicationController
   # GET /expenses.json
   def index
     @expenses = Expense.all
+    @user = current_user
+    my_expenses
+    sum_expenses
   end
 
   # GET /expenses/1
@@ -60,6 +63,15 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+  def my_expenses
+    expense_id = current_user.id
+    @myexpenses = current_user.expenses.where(user_id: expense_id).sort_by(&:created_at).reverse
+  end
+
+  def sum_expenses
+    @total = current_user.expenses.pluck(:amount).sum
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_expense

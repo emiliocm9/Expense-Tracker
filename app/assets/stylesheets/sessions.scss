@@ -22,6 +22,11 @@ body {
   border: 1px solid #434b54a2;
 }
 
+.header-expense {
+  height: 12%;
+  padding: 0 10px;
+}
+
 i {
   font-size: 25px;
 }
@@ -29,6 +34,10 @@ i {
 .header:nth-child(2) h4 {
   padding-top: 10px;
   flex: 1;
+}
+
+.expense-title {
+  font-size: 23px;
 }
 
 .primero {

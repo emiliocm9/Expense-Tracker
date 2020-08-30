@@ -5,7 +5,11 @@
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
   <div class="userpage_header-cont d-flex flex-column align-items-center justify-content-center">
     <div class="header_avatar">
-      <img src="<%=(url_for(@user.avatar))%>" class="header_avatar-image">
+      <% if @user.avatar.attached? %>
+        <img src="<%=(url_for(@user.avatar))%>" class="header_avatar-image">
+      <% else %>
+        <img src="https://bulma.io/images/placeholders/128x128.png" class="header_avatar-image">
+      <% end %>
     </div>
     <div class="header_avatar-text text-center mb-3">
       <h3 class="text-light"><%= @user.name%></h3>
@@ -21,7 +25,7 @@
         </div>
       </div>
       <div class="user_cat-textcont text-light">
-        <%= link_to 'Account Settings', edit_user_path(@user), class:'link text-light' %>
+        <%= link_to 'Account Settings', edit_user_path(@user), class:'link text-light text-size' %>
       </div>
     </div>
     <div class="user_cat-cont d-flex align-items-center">
@@ -31,7 +35,7 @@
         </div>
       </div>
       <div class="user_cat-textcont text-light">
-        <%= link_to 'My Expenses', expenses_path, class:'link text-light' %>
+        <%= link_to 'My Expenses', expenses_path, class:'link text-light text-size' %>
       </div>
     </div>
     <div class="user_cat-cont d-flex align-items-center">
@@ -41,7 +45,7 @@
         </div>
       </div>
       <div class="user_cat-textcont text-light">
-        <%= link_to 'My External Expenses', expenses_path, class:'link text-light' %>        
+        <%= link_to 'My External Expenses', expenses_path, class:'link text-light text-size' %>        
       </div>
     </div>
     <div class="user_cat-cont d-flex align-items-center">
@@ -51,7 +55,7 @@
         </div> 
       </div>
       <div class="user_cat-textcont-last text-light">
-        <%= link_to 'My Groups', groups_path, class:'link text-light' %>
+        <%= link_to 'My Groups', groups_path, class:'link text-light text-size' %>
       </div>
     </div>
   </div>
