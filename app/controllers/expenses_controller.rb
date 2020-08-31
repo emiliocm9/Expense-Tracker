@@ -35,8 +35,8 @@ class ExpensesController < ApplicationController
     @expense = current_user.expenses.build(expense_params)
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
-        format.json { render :show, status: :created, location: @expense }
+        format.html { redirect_to expenses_path, notice: 'Expense was successfully created.' }
+        format.json { render :index, status: :created, location: @expense }
       else
         format.html { render :new }
         format.json { render json: @expense.errors, status: :unprocessable_entity }

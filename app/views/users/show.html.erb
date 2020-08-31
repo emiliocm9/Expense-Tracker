@@ -3,7 +3,8 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
-  <div class="userpage_header-cont d-flex flex-column align-items-center justify-content-center">
+  <div class="view-port">
+  <div class="userpage_header-cont mt-5 d-flex flex-column align-items-center justify-content-center">
     <div class="header_avatar">
       <% if @user.avatar.attached? %>
         <img src="<%=(url_for(@user.avatar))%>" class="header_avatar-image">
@@ -59,7 +60,8 @@
       </div>
     </div>
   </div>
+  </div>
   <div class="w-100 bg-info d-flex mt-2 align-items-center text-center">
-    <%= link_to 'Log out', logout_path, method: :delete, class:"text-uppercase mt-2 mb-2 text-light mx-auto link" %>
+    <%= link_to 'Log out', logout_path, method: :delete, class:"text-uppercase mt-4 mb-4 text-light text-casual-bold text-size mx-auto link" %>
   </div>
 </div>
