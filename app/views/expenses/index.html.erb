@@ -1,33 +1,51 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Expenses</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Group</th>
-      <th>Name</th>
-      <th>Amount</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @expenses.each do |expense| %>
-      <tr>
-        <td><%= expense.user %></td>
-        <td><%= expense.group %></td>
-        <td><%= expense.name %></td>
-        <td><%= expense.amount %></td>
-        <td><%= link_to 'Show', expense %></td>
-        <td><%= link_to 'Edit', edit_expense_path(expense) %></td>
-        <td><%= link_to 'Destroy', expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<div class="header-expense w-100 bg-main d-flex align-items-center">
+  <div class="primero">
+    <%= link_to @user, class:'link' do %>
+      <i class="fas fa-arrow-left text-light"></i>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Expense', new_expense_path %>
+  </div>
+  <div class="d-flex text-center flex-column pt-2">
+    <h4 class="expense-title text-casual-bold text-uppercase text-light">My</h4>
+    <h4 class="expense-title text-casual-bold text-uppercase text-light">Expenses</h4>
+  </div>
+  <div class="actions">
+    <%= link_to 'New', new_expense_path, class:'button text-uppercase text-casual-bold' %>
+  </div>
+</div>
+<div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size">Total</p>
+  </div>
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size">$<%= @total %></p>
+  </div>
+</div>
+<% @myexpenses.each do |expense| %>
+  <div class="expense_big-container d-flex align-items-center bg-light mt-3">
+    <div class="expense_big-image p-2">
+      <% if expense.group.icon.attached? %>
+        <img src="<%=(url_for(expense.group.icon))%>" class="w-80">
+      <% else %>
+        <img src="https://bulma.io/images/placeholders/128x128.png" class="w-80">
+      <% end %>
+    </div>
+    <div class="expense_big-titles p-2 d-flex flex-column w-60">
+      <div class="expenses-titles d-flex justify-content-between">
+        <p class="text-size text-casual-bold pr-3"><%= expense.name %></p>
+        <p class="text-size text-casual-bold pr-3">$<%= expense.amount %></p>
+      </div>
+      <div class="expenses-titles d-flex justify-content-between">
+        <p class="text-size-small text-muted text-casual-bold pr-3"><%= current_user.name %></p>
+        <p class="text-size-small text-muted text-casual-bold pr-3"><%= current_user.created_at.strftime('%B %d, %Y') %></p>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="bottom_container-big w-100 position-fixed fixed-bottom bg-second">
+  <div class="w-100 border border-light d-flex mt-2 align-items-center text-center">
+    <%= link_to 'New Expense', new_expense_path, class:"text-uppercase mt-2 mb-2 text-light mx-auto link" %>
+  </div>
+</div>

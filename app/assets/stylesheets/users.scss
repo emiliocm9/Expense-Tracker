@@ -1,3 +1,177 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f1f3f2;
+}
+
+.container-total {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.text-container {
+  width: 100%;
+  flex: 3;
+}
+
+.logs-container {
+  width: 100%;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logins {
+  width: 90%;
+  border-radius: 2px;
+  text-align: center;
+  padding: 9px 0;
+}
+
+.logins:hover {
+  cursor: pointer;
+}
+
+.file_real-cont {
+  width: 100%;
+  border: 1px solid #c1c4c3;
+  padding: 5px 10px;
+  box-shadow: 0 0 1px 0 rgba(193, 196, 195, 1);
+}
+
+.file_image-cont {
+  width: 30%;
+}
+
+.file_image-cont img {
+  width: 80%;
+}
+
+.file_text-cont:hover {
+  cursor: pointer;
+}
+
+.file_text-cont span {
+  color: #a9a9a9;
+}
+
+.file_text-cont span:hover {
+  cursor: pointer;
+}
+
+.input-avatar {
+  position: absolute;
+  left: 32%;
+}
+
+.input-avatar:hover {
+  cursor: pointer;
+}
+
+.file-button {
+  opacity: 0;
+  width: 50%;
+}
+
+.file-button:hover {
+  cursor: pointer;
+}
+
+// users show page
+
+.userpage_big-cont {
+  background: rgb(55, 120, 194);
+  background: linear-gradient(225deg, rgba(55, 120, 194, 1) 0%, rgba(0, 212, 255, 1) 100%);
+}
+
+.header_avatar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header_avatar-image {
+  width: 50%;
+  margin: auto;
+  clip-path: circle(43% at 50% 50%);
+}
+
+.header_avatar-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.header_avatar-text p {
+  font-size: 20px;
+}
+
+.userpage_cat-cont {
+  width: 100%;
+}
+
+.user_cat-cont {
+  width: 100%;
+}
+
+.user_cat-logocont {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.user_cat-logocont-group {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.circle-logo {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  padding: 10%;
+  border-radius: 50%;
+}
+
+.circle-logo-group {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  padding: 20%;
+  border-radius: 10%;
+  background-size: cover;
+  background-position: center;
+}
+
+.circle-logo i {
+  font-size: 100%;
+}
+
+.user_cat-textcont {
+  width: 70%;
+  border-bottom: 1px solid white;
+  padding: 7.2% 0;
+}
+
+.user_cat-textcont-last {
+  width: 70%;
+  padding: 7.2% 0;
+}
+
+@media only screen and (max-width: 600px) and (min-width: 300px) {
+  .userpage_big-cont {
+    height: 100vh;
+    overflow: hidden;
+  }
+}

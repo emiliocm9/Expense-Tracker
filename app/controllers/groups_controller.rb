@@ -4,12 +4,15 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.order(:name)
+    @user = current_user
   end
 
   # GET /groups/1
   # GET /groups/1.json
-  def show; end
+  def show
+    @total = @group.expenses.pluck(:amount).sum
+  end
 
   # GET /groups/new
   def new
@@ -68,6 +71,6 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    params.require(:group).permit(:user_id, :name)
+    params.require(:group).permit(:user_id, :name, :icon)
   end
 end

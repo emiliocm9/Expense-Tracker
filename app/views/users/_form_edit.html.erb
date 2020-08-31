@@ -1,15 +1,15 @@
 <%= form_with(model: user, local: true) do |form| %>
   <div class="header w-100 bg-main d-flex align-items-center">
     <div class="primero">
-      <%= link_to root_path, class:'link' do %>
+      <%= link_to @user, class:'link' do %>
         <i class="fas fa-arrow-left text-light"></i>
       <% end %>
     </div>
     <div class="d-flex align-items center">
-      <h4 class="text-casual text-uppercase text-light">Register</h4>
+      <h4 class="text-casual text-uppercase text-light">Edit User</h4>
     </div>
     <div class="actions">
-      <%= form.submit "Next", class:'button text-casual-bold' %>
+      <%= form.submit "Change", class:'button text-casual-bold' %>
     </div>
   </div>
   <% if user.errors.any? %>
@@ -29,7 +29,7 @@
       <img src="https://www.kindpng.com/picc/m/285-2855863_a-festival-celebrating-tractors-round-profile-picture-placeholder.png">
     </div>
     <div class="file_text-cont">
-      <span>Upload picture</span>
+      <span>Upload new picture</span>
     </div>
     <div class="field input-avatar">
       <%= form.file_field :avatar, class: 'file-button' %>
@@ -43,9 +43,12 @@
     <%= form.text_field :username, placeholder: 'Username', class: 'input-tag' %>
   </div>
   <div class="field input-signup">
-    <%= form.password_field :password, placeholder: 'Password', class: 'input-tag' %>
+    <%= form.password_field :password, placeholder: 'New password', class: 'input-tag' %>
   </div>
   <div class="field input-signup">
     <%= form.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'input-tag' %>
+  </div>
+  <div class="field input-signup">
+    <%= form.password_field :current_password, hint: "we need your current password to confirm your changes", placeholder: 'Current password', class: 'input-tag' %>
   </div>
 <% end %>

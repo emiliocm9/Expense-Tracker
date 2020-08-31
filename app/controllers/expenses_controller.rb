@@ -5,6 +5,9 @@ class ExpensesController < ApplicationController
   # GET /expenses.json
   def index
     @expenses = Expense.all
+    @user = current_user
+    my_expenses
+    sum_expenses
   end
 
   # GET /expenses/1
@@ -16,14 +19,20 @@ class ExpensesController < ApplicationController
     @expense = Expense.new
   end
 
+  def external
+    external_expenses
+    @user = current_user
+    @expenses = Expense.all
+    sum_external
+  end
+
   # GET /expenses/1/edit
   def edit; end
 
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = Expense.new(expense_params)
-
+    @expense = current_user.expenses.build(expense_params)
     respond_to do |format|
       if @expense.save
         format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
@@ -60,6 +69,23 @@ class ExpensesController < ApplicationController
   end
 
   private
+
+  def my_expenses
+    @myexpenses = current_user.expenses.where.not(group_id: nil).sort_by(&:created_at).reverse
+  end
+
+  def external_expenses
+    expense_id = current_user.id
+    @externalexp = current_user.expenses.where(user_id: expense_id, group_id: nil).sort_by(&:created_at).reverse
+  end
+
+  def sum_expenses
+    @total = current_user.expenses.where.not(group_id: nil).pluck(:amount).sum
+  end
+
+  def sum_external
+    @total = current_user.expenses.where(group_id: nil).pluck(:amount).sum
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_expense
