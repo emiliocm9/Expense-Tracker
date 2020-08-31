@@ -71,8 +71,7 @@ class ExpensesController < ApplicationController
   private
 
   def my_expenses
-    expense_id = current_user.id
-    @myexpenses = current_user.expenses.where(user_id: expense_id).where.not(group_id: nil).sort_by(&:created_at).reverse
+    @myexpenses = current_user.expenses.where.not(group_id: nil).sort_by(&:created_at).reverse
   end
 
   def external_expenses
