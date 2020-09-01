@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'months/july'
   get 'months/aug'
   get 'months/sept'
+  get 'months/oct'
   get 'months/nov'
   get 'months/dec'
   resources :sessions

@@ -71,11 +71,6 @@ class ExpensesController < ApplicationController
     end
   end
 
-  def august
-    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '08')
-    render :august
-  end
-
   private
 
   def my_expenses
