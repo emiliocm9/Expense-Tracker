@@ -1,7 +1,7 @@
 <%= form_with(model: group, local: true) do |form| %>
   <div class="header-expense w-100 bg-main d-flex align-items-center">
     <div class="primero">
-      <%= link_to groups_path, class:'link' do %>
+      <%= link_to @group, class:'link' do %>
         <i class="fas fa-arrow-left text-light"></i>
       <% end %>
     </div>

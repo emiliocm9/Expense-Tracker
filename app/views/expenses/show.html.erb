@@ -1,24 +1,45 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<div class="header-expense w-100 bg-main d-flex align-items-center">
+  <div class="primero">
+    <%= link_to expenses_path, class:'link' do %>
+      <i class="fas fa-arrow-left text-light"></i>
+    <% end %>
+  </div>
+  <div class="d-flex text-center flex-column pt-2">
+    <h4 class="expense-title text-casual-bold text-uppercase text-light"><%= @expense.name %></h4>
+    <p class="text-size-small text-light">Created on: <%= @expense.created_at.strftime('%B %d, %Y')%></p>
+  </div>
+  <div class="actions">
+    <%= link_to 'Edit', edit_expense_path(@expense), class:'button text-uppercase text-casual-bold' %>
+  </div>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @expense.user %>
-</p>
+<div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size">Total</p>
+  </div>
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size">$<%= @expense.amount %></p>
+  </div>
+</div>
 
-<p>
-  <strong>Group:</strong>
-  <%= @expense.group %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @expense.name %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
-
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+<div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size text-size-small">Created by</p>
+  </div>
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size-small"><%= @expense.user.name %></p>
+  </div>
+</div>
+<% if @expense.group_id %>
+  <div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+    <div class="total_title-container">
+      <p class="text-casual-bold text-size text-size-small">Group</p>
+    </div>
+    <div class="total_title-container">
+      <p class="text-casual-bold text-size-small"><%= @expense.group.name %></p>
+    </div>
+  </div>
+<% end %>

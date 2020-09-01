@@ -3,6 +3,11 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
+  <div class="w-100 text-center mt-4 mb-3">
+    <%= link_to user_path(@user), class:'link' do %>
+      <i class="fas fa-arrow-left text-light"></i>
+    <% end %>
+  </div>
   <div class="userpage_header-cont d-flex flex-column align-items-center justify-content-center">
     <div class="header_avatar">
       <% if @user.avatar.attached? %>
