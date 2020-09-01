@@ -8,6 +8,9 @@ class ExpensesController < ApplicationController
     @user = current_user
     my_expenses
     sum_expenses
+    @month_wise_sorted_alerts = @expenses.group_by{ |t| t.created_at.month}
+    # Expense.where('extract(month from date_column) = ?', 09 )
+    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '08')
   end
 
   # GET /expenses/1
@@ -35,7 +38,7 @@ class ExpensesController < ApplicationController
     @expense = current_user.expenses.build(expense_params)
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @user, notice: 'Expense was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
@@ -66,6 +69,11 @@ class ExpensesController < ApplicationController
       format.html { redirect_to @user, notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def august
+    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '08')
+    render :august
   end
 
   private
