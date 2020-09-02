@@ -122,7 +122,7 @@ class MonthsController < ApplicationController
   def most_expensive
     if !@august.empty?
       arr = @august.pluck(:amount)
-      article_price = arr.sort.last
+      article_price = arr.max
       @article = Expense.where(amount: article_price)[0].name
     else
       @article = 'None'

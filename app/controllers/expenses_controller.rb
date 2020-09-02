@@ -9,7 +9,7 @@ class ExpensesController < ApplicationController
     @user = current_user
     my_expenses
     sum_expenses
-    @month_wise_sorted_alerts = @expenses.group_by{ |t| t.created_at.month}
+    @month_wise_sorted_alerts = @expenses.group_by { |t| t.created_at.month }
     # Expense.where('extract(month from date_column) = ?', 09 )
     @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '08')
   end
