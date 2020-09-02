@@ -43,10 +43,10 @@
     <%= form.text_field :username, placeholder: 'Username', class: 'input-tag' %>
   </div>
   <div class="field input-signup">
-    <%= form.password_field :password, placeholder: 'New password', class: 'input-tag' %>
+    <%= form.password_field :password, placeholder: 'New password', class: 'input-tag', autocomplete: 'off' %>
   </div>
   <div class="field input-signup">
-    <%= form.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'input-tag' %>
+    <%= form.password_field :password_confirmation, placeholder: 'New password confirmation', class: 'input-tag' %>
   </div>
   <div class="field input-signup">
     <%= form.password_field :current_password, hint: "we need your current password to confirm your changes", placeholder: 'Current password', class: 'input-tag' %>

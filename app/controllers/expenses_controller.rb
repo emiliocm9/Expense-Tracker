@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[show edit update destroy]
+  before_action :logged_in_user, only: %i[index edit update show destroy]
 
   # GET /expenses
   # GET /expenses.json
@@ -8,6 +9,9 @@ class ExpensesController < ApplicationController
     @user = current_user
     my_expenses
     sum_expenses
+    @month_wise_sorted_alerts = @expenses.group_by { |t| t.created_at.month }
+    # Expense.where('extract(month from date_column) = ?', 09 )
+    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '08')
   end
 
   # GET /expenses/1
@@ -35,7 +39,7 @@ class ExpensesController < ApplicationController
     @expense = current_user.expenses.build(expense_params)
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to @expense, notice: 'Expense was successfully created.' }
+        format.html { redirect_to user_path(current_user), notice: 'Expense was successfully created.' }
         format.json { render :show, status: :created, location: @expense }
       else
         format.html { render :new }
@@ -63,7 +67,7 @@ class ExpensesController < ApplicationController
   def destroy
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url, notice: 'Expense was successfully destroyed.' }
+      format.html { redirect_to @user, notice: 'Expense was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

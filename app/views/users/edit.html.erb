@@ -1,2 +1,7 @@
 <%= stylesheet_link_tag 'users', media: 'all' %>
 <%= render 'form_edit', user: @user %>
+<div class="bottom_container-big w-100 position-fixed fixed-bottom bg-danger">
+  <div class="w-100 border border-light d-flex mt-2 align-items-center text-center">
+    <%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class:"text-uppercase mt-2 mb-2 text-light mx-auto link" %>
+  </div>
+</div>

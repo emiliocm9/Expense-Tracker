@@ -3,7 +3,7 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
-  <div class="userpage_header-cont d-flex flex-column align-items-center justify-content-center">
+  <div class="userpage_header-cont mt-5 d-flex flex-column align-items-center justify-content-center">
     <div class="header_avatar">
       <% if @user.avatar.attached? %>
         <img src="<%=(url_for(@user.avatar))%>" class="header_avatar-image">
@@ -16,50 +16,62 @@
       <p class="text-dark text-casual">@<%= @user.username%></p>
     </div>
   </div>
-
-  <div class="userpage_cat-cont d-flex flex-column">
-    <div class="user_cat-cont d-flex align-items-center">
-      <div class="user_cat-logocont">
-        <div class="circle-logo text-light">
-          <i class="fas fa-cog"></i>
+  <div class="pb-5 mb-5">
+    <div class="userpage_cat-cont d-flex flex-column">
+      <div class="user_cat-cont d-flex align-items-center">
+        <div class="user_cat-logocont">
+          <div class="circle-logo text-light">
+            <i class="fas fa-cog"></i>
+          </div>
+        </div>
+        <div class="user_cat-textcont text-light">
+          <%= link_to 'Account Settings', edit_user_path(@user), class:'link text-light text-size' %>
         </div>
       </div>
-      <div class="user_cat-textcont text-light">
-        <%= link_to 'Account Settings', edit_user_path(@user), class:'link text-light text-size' %>
-      </div>
-    </div>
-    <div class="user_cat-cont d-flex align-items-center">
-      <div class="user_cat-logocont">
-        <div class="circle-logo text-light">
-          <i class="fas fa-wallet"></i>
+      <div class="user_cat-cont d-flex align-items-center">
+        <div class="user_cat-logocont">
+          <div class="circle-logo text-light">
+            <i class="fas fa-wallet"></i>
+          </div>
+        </div>
+        <div class="user_cat-textcont text-light">
+          <%= link_to 'My Expenses', expenses_path, class:'link text-light text-size' %>
         </div>
       </div>
-      <div class="user_cat-textcont text-light">
-        <%= link_to 'My Expenses', expenses_path, class:'link text-light text-size' %>
-      </div>
-    </div>
-    <div class="user_cat-cont d-flex align-items-center">
-      <div class="user_cat-logocont">
-        <div class="circle-logo text-light">
-          <i class="fas fa-funnel-dollar"></i>
+      <div class="user_cat-cont d-flex align-items-center">
+        <div class="user_cat-logocont">
+          <div class="circle-logo text-light">
+            <i class="fas fa-funnel-dollar"></i>
+          </div>
+        </div>
+        <div class="user_cat-textcont text-light">
+          <%= link_to 'My External Expenses', external_path, class:'link text-light text-size' %>        
         </div>
       </div>
-      <div class="user_cat-textcont text-light">
-        <%= link_to 'My External Expenses', external_path, class:'link text-light text-size' %>        
+      <div class="user_cat-cont d-flex align-items-center">
+        <div class="user_cat-logocont">
+          <div class="circle-logo text-light">
+            <i class="fas fa-layer-group"></i>
+          </div> 
+        </div>
+        <div class="user_cat-textcont text-light">
+          <%= link_to 'My Groups', groups_path, class:'link text-light text-size' %>
+        </div>
+      </div>
+      <div class="user_cat-cont d-flex align-items-center">
+        <div class="user_cat-logocont">
+          <div class="circle-logo text-light">
+            <i class="fas fa-calendar-check"></i>
+          </div> 
+        </div>
+        <div class="user_cat-textcont-last text-light">
+          <%= link_to 'Monthly Summary', months_index_path, class:'link text-light text-size' %>
+        </div>
       </div>
     </div>
-    <div class="user_cat-cont d-flex align-items-center">
-      <div class="user_cat-logocont">
-        <div class="circle-logo text-light">
-          <i class="fas fa-layer-group"></i>
-        </div> 
-      </div>
-      <div class="user_cat-textcont-last text-light">
-        <%= link_to 'My Groups', groups_path, class:'link text-light text-size' %>
+    </div>
+      <div class="w-100 bg-info d-flex mt-2 align-items-center text-center">
+        <%= link_to 'Log out', logout_path, method: :delete, class:"text-uppercase mt-4 mb-4 text-light text-casual-bold text-size mx-auto link" %>
       </div>
     </div>
-  </div>
-  <div class="w-100 bg-info d-flex mt-2 align-items-center text-center">
-    <%= link_to 'Log out', logout_path, method: :delete, class:"text-uppercase mt-2 mb-2 text-light mx-auto link" %>
-  </div>
 </div>
