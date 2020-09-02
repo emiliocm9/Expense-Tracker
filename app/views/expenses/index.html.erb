@@ -53,23 +53,3 @@
     <%= link_to 'New Expense', new_expense_path, class:"text-uppercase mt-2 mb-2 text-light mx-auto link" %>
   </div>
 </div>
-
-
-
-
-; Expenses Index for monthly grouped
-<% if @month_wise_sorted_alerts.present? %>
-  <% @month_wise_sorted_alerts.each do |hash_elements|%>
-  <h3> <%= Date::MONTHNAMES[hash_elements.first] %> </h3>
-  <% hash_elements.last.each do |msg| %>
-    <%= msg.name %>
-    <%= msg.created_at.strftime('%b %d') %> 
-    <br />
-  <% end %> 
-  <br />
-  <% end %>
-<% end %>
-
-<% @august.each do |alo| %>
-<h1><%= alo.name %></h1>
-<% end %>

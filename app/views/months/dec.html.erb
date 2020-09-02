@@ -18,6 +18,30 @@
     <p class="text-casual-bold text-size">$<%= @total %></p>
   </div>
 </div>
+<div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+  <div class="total_title-container-half">
+    <p class="text-casual-bold text-size-small text-size">Spend per day:</p>
+  </div>
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size-small text-size">$<%= @average.round(2) %></p>
+  </div>
+</div>
+<div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+  <div class="total_title-container-half">
+    <p class="text-casual-bold text-size-small text-size">You spent most on:</p>
+  </div>
+  <div class="total_title-container">
+    <p class="text-casual-bold text-size-small text-size"><%= @pop %></p>
+  </div>
+</div>
+<div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
+  <div class="total_title-container-half">
+    <p class="text-casual-bold text-size-small text-size">Most expensive article:</p>
+  </div>
+  <div class="total_title-container text-center">
+    <p class="text-casual-bold text-size-small text-size"><%= @article %></p>
+  </div>
+</div>
 <div class="pb-5 mb-5">
 <% @august.each do |expense| %>
   <%= link_to expense, class:'link' do %>

@@ -1,5 +1,6 @@
 class ExpensesController < ApplicationController
   before_action :set_expense, only: %i[show edit update destroy]
+  before_action :logged_in_user, only: %i[index edit update show destroy]
 
   # GET /expenses
   # GET /expenses.json
