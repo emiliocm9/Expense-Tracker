@@ -16,11 +16,11 @@ RSpec.describe '/expenses', type: :request do
   # Expense. As you add validations to Expense, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    skip({ name: 'Milk', amount: 44.25 })
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    skip({ name: '', amount: '' })
   end
 
   describe 'GET /index' do
