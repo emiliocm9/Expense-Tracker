@@ -28,11 +28,7 @@
     <%= link_to expense, class:'link' do %>
       <div class="expense_big-container d-flex align-items-center bg-light mt-3">
         <div class="expense_big-image p-2">
-          <% if expense.group.icon.attached? %>
-            <img src="<%=(url_for(expense.group.icon))%>" class="w-80">
-          <% else %>
-            <img src="https://bulma.io/images/placeholders/128x128.png" class="w-80">
-          <% end %>
+          <%= expense_group(expense) %>
         </div>
         <div class="expense_big-titles p-2 d-flex flex-column w-60">
           <div class="expenses-titles d-flex justify-content-between">
