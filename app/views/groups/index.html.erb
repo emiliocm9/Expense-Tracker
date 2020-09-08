@@ -1,7 +1,5 @@
 <%= stylesheet_link_tag 'users', media: 'all' %>
-<% if notice.present? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+<%= notice_helper %>
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
   <div class="w-100 text-center mt-4 mb-3">
     <%= link_to user_path(@user), class:'link' do %>

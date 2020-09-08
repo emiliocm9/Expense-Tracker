@@ -1,7 +1,5 @@
 <%= stylesheet_link_tag 'users', media: 'all' %>
-<% if notice.present? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+<%= notice_helper %>
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
   <div class="userpage_header-cont mt-5 d-flex flex-column align-items-center justify-content-center">
     <div class="header_avatar">
