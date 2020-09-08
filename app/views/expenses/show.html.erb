@@ -31,13 +31,4 @@
     <p class="text-casual-bold text-size-small"><%= @expense.user.name %></p>
   </div>
 </div>
-<% if @expense.group_id %>
-  <div class="total_big-container d-flex align-items-center pt-3 pb-3 bg-light justify-content-between">
-    <div class="total_title-container">
-      <p class="text-casual-bold text-size text-size-small">Group</p>
-    </div>
-    <div class="total_title-container">
-      <p class="text-casual-bold text-size-small"><%= @expense.group.name %></p>
-    </div>
-  </div>
-<% end %>
+<%=  expense_id(@expense) %>
