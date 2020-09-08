@@ -113,11 +113,10 @@ class MonthsController < ApplicationController
       arr = @august.where.not(group_id: nil).pluck(:group_id)
       res = {}
       arr.uniq.each do |n|
-        group = Group.find(n)
-        suma = group.expenses.pluck(:amount).sum
-        res.merge!(n => suma)
+        suma = @august.where(group_id: n).pluck(:amount).sum
+        res[n] = suma
       end
-      idx = res.max_by { |k, v| v }[0]
+      idx = res.max_by { |_k, v| v }[0]
       @pop = Group.find(idx).name
     else
       @pop = 'None'
