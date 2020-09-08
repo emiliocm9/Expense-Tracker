@@ -92,6 +92,7 @@ class MonthsController < ApplicationController
   private
 
   def pack
+    most_group
     most_expensive
   end
 
@@ -110,9 +111,14 @@ class MonthsController < ApplicationController
   def most_group
     if !@august.empty?
       arr = @august.where.not(group_id: nil).pluck(:group_id)
-      most = arr.each_with_object(Hash.new(0)) { |v, h| h[v] += 1 }.max_by(&:last)
-      most_group = Group.find(most)[0]
-      @pop = most_group.name
+      res = {}
+      arr.uniq.each do |n|
+        group = Group.find(n)
+        suma = group.expenses.pluck(:amount).sum
+        res.merge!(n => suma)
+      end
+      idx = res.max_by { |k, v| v }[0]
+      @pop = Group.find(idx).name
     else
       @pop = 'None'
     end
