@@ -14,21 +14,24 @@ class MonthsController < ApplicationController
   end
 
   def feb
-    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '02')
+    # @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '02')
+    @august = Expense.where('extract(month from created_at) = ?', '02')
     @total = @august.pluck(:amount).sum
     average_feb
     pack
   end
 
   def march
-    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '03')
+    # @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '03')
+    @august = Expense.where('extract(month from created_at) = ?', '09')
     @total = @august.pluck(:amount).sum
     average_a
     pack
   end
 
   def april
-    @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '04')
+    # @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '04')
+    @august = Expense.where('extract(month from created_at) = ?', '09')
     @total = @august.pluck(:amount).sum
     average_b
     pack
