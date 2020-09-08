@@ -104,7 +104,6 @@ class MonthsController < ApplicationController
   private
 
   def pack
-    # most_group
     most_expensive
   end
 
