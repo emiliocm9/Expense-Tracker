@@ -6,6 +6,11 @@ This is a web app for mobiles created to track your expenses. It includes an ext
 
 ![Index](./app/assets/images/Index.png)
 
+## Description of the project video
+You can watch a video with a brief description of the project explaining how I handled n+1 problem. Also with a brief look at the project pages.
+
+[Video-loom](https://www.loom.com/share/9fe68b9e91ac41558ee5e1cf52d47662)
+
 ## Built With
 
 - Ruby v2.6.5
