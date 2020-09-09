@@ -1,7 +1,5 @@
 <%= stylesheet_link_tag 'sessions', media: 'all' %>
-<% if alert.present? %>
-  <p id="alert"><%= alert %></p>
-<% end %>
+<%= notice_helper %>
 <%= form_tag sessions_path do |form| %>
 <div class="header w-100 bg-main d-flex align-items-center">
   <div class="primero">

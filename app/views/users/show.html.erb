@@ -1,15 +1,9 @@
 <%= stylesheet_link_tag 'users', media: 'all' %>
-<% if notice.present? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+<%= notice_helper %>
 <div class="userpage_big-cont d-flex flex-column justify-content-between">
   <div class="userpage_header-cont mt-5 d-flex flex-column align-items-center justify-content-center">
     <div class="header_avatar">
-      <% if @user.avatar.attached? %>
-        <img src="<%=(url_for(@user.avatar))%>" class="header_avatar-image">
-      <% else %>
-        <img src="https://bulma.io/images/placeholders/128x128.png" class="header_avatar-image">
-      <% end %>
+      <%= user_avatar(@user) %>
     </div>
     <div class="header_avatar-text text-center mb-3">
       <h3 class="text-light"><%= @user.name%></h3>

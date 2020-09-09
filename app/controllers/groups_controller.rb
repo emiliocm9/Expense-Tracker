@@ -5,7 +5,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.order(:name)
+    @groups = current_user.groups.order(:name)
     @user = current_user
   end
 

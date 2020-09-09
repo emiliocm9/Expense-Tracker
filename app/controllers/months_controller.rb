@@ -111,9 +111,13 @@ class MonthsController < ApplicationController
   def most_group
     if !@august.empty?
       arr = @august.where.not(group_id: nil).pluck(:group_id)
-      most = arr.each_with_object(Hash.new(0)) { |v, h| h[v] += 1 }.max_by(&:last)
-      most_group = Group.find(most)[0]
-      @pop = most_group.name
+      res = {}
+      arr.uniq.each do |n|
+        suma = @august.where(group_id: n).pluck(:amount).sum
+        res[n] = suma
+      end
+      idx = res.max_by { |_k, v| v }[0]
+      @pop = Group.find(idx).name
     else
       @pop = 'None'
     end

@@ -10,7 +10,6 @@ class ExpensesController < ApplicationController
     my_expenses
     sum_expenses
     @month_wise_sorted_alerts = @expenses.group_by { |t| t.created_at.month }
-    # Expense.where('extract(month from date_column) = ?', 09 )
     @august = Expense.where("cast(strftime('%m', created_at) as int) = ?", '08')
   end
 
@@ -75,7 +74,7 @@ class ExpensesController < ApplicationController
   private
 
   def my_expenses
-    @myexpenses = current_user.expenses.where.not(group_id: nil).sort_by(&:created_at).reverse
+    @myexpenses = current_user.expenses.sort_by(&:created_at).reverse
   end
 
   def external_expenses
