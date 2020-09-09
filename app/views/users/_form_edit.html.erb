@@ -1,0 +1,44 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <div class="header w-100 bg-main d-flex align-items-center">
+    <div class="primero">
+      <%= link_to @user, class:'link' do %>
+        <i class="fas fa-arrow-left text-light"></i>
+      <% end %>
+    </div>
+    <div class="d-flex align-items center">
+      <h4 class="text-casual text-uppercase text-light">Edit User</h4>
+    </div>
+    <div class="actions">
+      <%= form.submit "Change", class:'button text-casual-bold' %>
+    </div>
+  </div>
+  <%= form_error_user(user) %>
+
+  <div class="file_real-cont d-flex align-items-center">
+    <div class="file_image-cont">
+      <img src="https://www.kindpng.com/picc/m/285-2855863_a-festival-celebrating-tractors-round-profile-picture-placeholder.png">
+    </div>
+    <div class="file_text-cont">
+      <span>Upload new picture</span>
+    </div>
+    <div class="field input-avatar">
+      <%= form.file_field :avatar, class: 'file-button' %>
+    </div>
+  </div>
+
+  <div class="field input-signup">
+    <%= form.text_field :name, placeholder: 'Name', class: 'input-tag' %>
+  </div>
+  <div class="field input-signup">
+    <%= form.text_field :username, placeholder: 'Username', class: 'input-tag' %>
+  </div>
+  <div class="field input-signup">
+    <%= form.password_field :password, placeholder: 'New password', class: 'input-tag', autocomplete: 'off' %>
+  </div>
+  <div class="field input-signup">
+    <%= form.password_field :password_confirmation, placeholder: 'New password confirmation', class: 'input-tag' %>
+  </div>
+  <div class="field input-signup">
+    <%= form.password_field :current_password, hint: "we need your current password to confirm your changes", placeholder: 'Current password', class: 'input-tag' %>
+  </div>
+<% end %>

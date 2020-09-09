@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'users', media: 'all' %>
+<%= notice_helper %>
+<div class="userpage_big-cont d-flex flex-column justify-content-between">
+  <div class="w-100 text-center mt-4 mb-3">
+    <%= link_to user_path(@user), class:'link' do %>
+      <i class="fas fa-arrow-left text-light"></i>
+    <% end %>
+  </div>
+  <div class="userpage_header-cont d-flex flex-column align-items-center justify-content-center">
+    <div class="header_avatar">
+      <%= user_avatar(@user) %>
+    </div>
+    <div class="header_avatar-text text-center mb-3">
+      <h3 class="text-light"><%= @user.name%></h3>
+      <p class="text-dark text-casual">@<%= @user.username%></p>
+    </div>
+  </div>
+  <% @groups.each do |group| %>
+    <div class="userpage_cat-cont d-flex flex-column">
+      <div class="user_cat-cont d-flex align-items-center">
+        <div class="user_cat-logocont-group">
+          <%= group_background(group) %>
+        </div>
+        <div class="user_cat-textcont text-light">
+          <%= link_to group_path(group), class:'link text-center text-light text-size' do %>
+            <div class="d-flex flex-column pt-3 text-center">
+              <p class="link text-light text-casual-bold text-size"><%= group.name %></p>
+              <p class="link text-light text-casual-bold text-size-small"><%= group.created_at.strftime('%B %d, %Y') %></p>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  <%end%>
+  <div class="w-100 bg-info d-flex mt-2 align-items-center text-center">
+    <%= link_to 'New Group', new_group_path, class:"text-uppercase mt-2 mb-2 text-light mx-auto link" %>
+  </div>
+</div>
