@@ -1,4 +1,4 @@
-# Expense Tracker W
+# Expense Tracker We
 
 This is a web app for mobiles created to track your expenses. It includes an extra feature to track your expenses monthly with its proper information as :spend per day, :most expensive object, and :total. 
 
